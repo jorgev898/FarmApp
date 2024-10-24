@@ -6,18 +6,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return view('products.index');  
-    }
-
-    public function create(){
-        return view('products.create');
-    }
-
-    public function show($product, $category=null){
-      return view('products.show', [
-        'category' => $category,
-        'product' => $product,
-    ]);
+    public function product(){
+        return view('product.product');  
     }
 }

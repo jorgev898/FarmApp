@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductssController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +19,11 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', HomeController::class );
 
+Route::prefix('/auth')->controller(AuthController::class)->group(function(){
+    Route::get('/register', 'register');
+    Route::get('/login', 'login');
+});
 
 Route::prefix('/products')->controller(ProductController::class)->group(function(){
-    Route::get('/','index');
-    Route::get('/create','create');
-    Route::get('/{product}/{category?}','show');    
+    Route::get('show', 'product');
 });
